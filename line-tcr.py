@@ -41,8 +41,8 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [Ginfo] = Group info
 [Mid all] = Cek all mid bot
 [Mid 1/2/3/4] = Cek mid bot
-[Get ready] = Cek respon Bot
-[Speedbot] = Cek kecepatan bot
+[Set] = Cek respon Bot
+[Speed] = Cek kecepatan bot
 [Up] = Fungsi spam chat
 [Tagall] = Mention semua user
 [Banlist] = Cek list akun banned
@@ -71,6 +71,7 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [R Bot join] = Invite semua bot
 [_namabot join] = Invite bot
 [Bye _namabot] = Leave bot
+[Ciao] = Kick All
 """
 
 Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
@@ -92,8 +93,8 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid,"YOUR_MID"]
-admin=["YOUR_MID"]
-admsa=["YOUR_MID"]
+admin=["u006d5fe895c4bb17460c5f87eba6a374"]
+admsa=["u006d5fe895c4bb17460c5f87eba6a374"]
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -1028,7 +1029,7 @@ def bot(op):
             elif msg.text in ["Creator","creator"]:
                 msg.contentType = 13
                 cl.sendText(msg.to, "Created By: RamJor")
-                msg.contentMetadata = {'mid': '"masukin MID"'}
+                msg.contentMetadata = {'mid':'u006d5fe895c4bb17460c5f87eba6a374'}
                 cl.sendMessage(msg)
             elif msg.text in ["Me"]:
                 msg.contentType = 13
@@ -2118,7 +2119,7 @@ def bot(op):
                             pass
          #----------------Fungsi Banned Kick Target Finish----------------------#                
 
-            elif "Sweep this group" in msg.text:
+            elif "Ciao" in msg.text:
               if msg.from_ in Bots:
                 if msg.toType == 2:
                     print "ok"
@@ -2311,11 +2312,11 @@ def bot(op):
 #-----------------------------------------------
 
        #-------------Fungsi Respon Start---------------------#
-            elif msg.text in ["Get ready"]:
-                cl.sendText(msg.to,"I'm ready")
-                ki.sendText(msg.to,"I'm ready")
-                kk.sendText(msg.to,"I'm ready")
-                kc.sendText(msg.to,"I'm ready")
+            elif msg.text in ["Set"]:
+                cl.sendText(msg.to,"OK!")
+                ki.sendText(msg.to,"OK!")
+                kk.sendText(msg.to,"OK!")
+                kc.sendText(msg.to,"OK!")
       #-------------Fungsi Respon Finish---------------------#
 
       #-------------Fungsi Balesan Respon Start---------------------#
@@ -2325,7 +2326,7 @@ def bot(op):
       #-------------Fungsi Balesan Respon Finish---------------------#
 
        #-------------Fungsi Speedbot Start---------------------#
-            elif msg.text in ["Speedbot","speedbot"]:
+            elif msg.text in ["Speed","speed"]:
                 start = time.time()
                 cl.sendText(msg.to, "please wait...")
                 elapsed_time = time.time() - start
