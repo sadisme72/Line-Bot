@@ -70,7 +70,8 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [Kick mid] = Kick via mid
 [R Bot join] = Invite semua bot
 [_namabot join] = Invite bot
-[Bye _namabot] = Leave bot
+[Bye AngkaBot] = Leave bot
+[Cabut Lu] = Bubarin bot
 [Ciao] = Kick All
 """
 
@@ -102,7 +103,7 @@ wait = {
     'leaveRoom':True,
     'timeline':False,
     'autoAdd':True,
-    'message':"Thanks for adding me,
+    'message':"Thanks for adding me",
     "lang":"JP",
     "comment":"Thanks for add me",
     "commentOn":True,
@@ -958,17 +959,17 @@ def bot(op):
               if msg.from_ in admin:
                 midd = msg.text.replace("Kick ","")
                 cl.kickoutFromGroup(msg.to,[midd])
-            elif "_second kick " in msg.text:
+            elif "2 kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("_second kick ","")
+                midd = msg.text.replace("2 kick ","")
                 ki.kickoutFromGroup(msg.to,[midd])
-            elif "_third kick " in msg.text:
+            elif "3 kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("_third kick ","")
+                midd = msg.text.replace("3 kick ","")
                 kk.kickoutFromGroup(msg.to,[midd])
-            elif "_fourth kick " in msg.text:
+            elif "4 kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("_fourth kick ","")
+                midd = msg.text.replace("4 kick ","")
                 kc.kickoutFromGroup(msg.to,[midd])
             elif "Invite " in msg.text:
               if msg.from_ in admin:
@@ -2010,7 +2011,8 @@ def bot(op):
     #----------------------Fungsi Join Group Finish---------------#
 
     #-------------Fungsi Leave Group Start---------------#
-            elif msg.text in ["Bye all"]:
+            elif msg.text in ["Cabut Lu"]:
+                cl.sendText(msg.to,"Oke Coy!")
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2021,7 +2023,7 @@ def bot(op):
                         cl.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye _Second"]:
+            elif msg.text in ["Bye 2"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2029,7 +2031,7 @@ def bot(op):
                         ki.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye _Third"]:
+            elif msg.text in ["Bye 3"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2037,7 +2039,7 @@ def bot(op):
                         kk.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye _Fourth"]:
+            elif msg.text in ["Bye 4"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2123,7 +2125,7 @@ def bot(op):
               if msg.from_ in Bots:
                 if msg.toType == 2:
                     print "ok"
-                    _name = msg.text.replace("Sweep this group","")
+                    _name = msg.text.replace("Ciao","")
                     gs = ki.getGroup(msg.to)
                     gs = kk.getGroup(msg.to)
                     gs = kc.getGroup(msg.to)
