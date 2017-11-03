@@ -50,7 +50,8 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [cek] = Membuat set point
 [sider] = Melihat sider dibawah read point
 [Creator] = Melihat kontak pembuat bot
-
+[Copy@] = Mengcopy Identitas Akun
+[Backup] = mengembalikan identitas akun
 􀔃􀅕red arrow right􏿿 Command Private
 [Set group] = Menggatur privasi grup
 [Gn namagroup] = Ganti nama group
@@ -2516,7 +2517,32 @@ def bot(op):
     except Exception as error:
         print error
 
-
+            elif msg.text in ["Copy@","copy@"]:
+                print"[Copy]OK"
+                _name = msg.text.replace("Copy@","")
+                _nametarget = _name.rstrip('')
+                gs = cl.getGroup(msg.to)
+                targets = []
+                for g in gs.members:
+                    if_nametarget == g.displayName:
+                        targets.append(g.mid)
+                  if targets ==[]:
+                      sendMessage(msg.to,"Not Found..")
+                      else:
+                          for target in targets:
+                              try:
+                                  cl.CloneContactProfile(target)
+                                  cl.sendText(msg.to,"Success Copy Profile..")
+                                  except Exception as e:
+                                      print e
+                                elif msg.text in["Backup","backup"]:
+                                    try:
+                                cl.updateDisplayPicture(backup.pictureStatus)
+                                    cl.updateProfile(backup)
+                                    cl.sendMessage(msg.to,"Backup Done")
+                                    except Exception as e:
+                                        cl.sendMessage(msg.to,str(e))
+ 
 def a2():
     now2 = datetime.now()
     nowT = datetime.strftime(now2,"%M")
