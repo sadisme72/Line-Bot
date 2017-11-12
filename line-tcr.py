@@ -50,8 +50,7 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [cek] = Membuat set point
 [sider] = Melihat sider dibawah read point
 [Creator] = Melihat kontak pembuat bot
-[Copy@] = Mengcopy Identitas Akun
-[Backup] = mengembalikan identitas akun
+
 􀔃􀅕red arrow right􏿿 Command Private
 [Set group] = Menggatur privasi grup
 [Gn namagroup] = Ganti nama group
@@ -71,8 +70,7 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [Kick mid] = Kick via mid
 [R Bot join] = Invite semua bot
 [_namabot join] = Invite bot
-[Bye AngkaBot] = Leave bot
-[Cabut Lu] = Bubarin bot
+[Bye _namabot] = Leave bot
 [Ciao] = Kick All
 """
 
@@ -960,17 +958,17 @@ def bot(op):
               if msg.from_ in admin:
                 midd = msg.text.replace("Kick ","")
                 cl.kickoutFromGroup(msg.to,[midd])
-            elif "2 kick " in msg.text:
+            elif "_second kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("2 kick ","")
+                midd = msg.text.replace("_second kick ","")
                 ki.kickoutFromGroup(msg.to,[midd])
-            elif "3 kick " in msg.text:
+            elif "_third kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("3 kick ","")
+                midd = msg.text.replace("_third kick ","")
                 kk.kickoutFromGroup(msg.to,[midd])
-            elif "4 kick " in msg.text:
+            elif "_fourth kick " in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("4 kick ","")
+                midd = msg.text.replace("_fourth kick ","")
                 kc.kickoutFromGroup(msg.to,[midd])
             elif "Invite " in msg.text:
               if msg.from_ in admin:
@@ -2012,8 +2010,7 @@ def bot(op):
     #----------------------Fungsi Join Group Finish---------------#
 
     #-------------Fungsi Leave Group Start---------------#
-            elif msg.text in ["Cabut Lu"]:
-                cl.sendText(msg.to,"Oke Coy!")
+            elif msg.text in ["Bye all"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2024,7 +2021,7 @@ def bot(op):
                         cl.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye 2"]:
+            elif msg.text in ["Bye _Second"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2032,7 +2029,7 @@ def bot(op):
                         ki.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye 3"]:
+            elif msg.text in ["Bye _Third"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2040,7 +2037,7 @@ def bot(op):
                         kk.leaveGroup(msg.to)
                     except:
                         pass
-            elif msg.text in ["Bye 4"]:
+            elif msg.text in ["Bye _Fourth"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
@@ -2126,7 +2123,7 @@ def bot(op):
               if msg.from_ in Bots:
                 if msg.toType == 2:
                     print "ok"
-                    _name = msg.text.replace("Ciao","")
+                    _name = msg.text.replace("Sweep this group","")
                     gs = ki.getGroup(msg.to)
                     gs = kk.getGroup(msg.to)
                     gs = kc.getGroup(msg.to)
@@ -2517,32 +2514,7 @@ def bot(op):
     except Exception as error:
         print error
 
-            elif msg.text in ["Copy@","copy@"]:
-                print"[Copy]OK"
-                _name = msg.text.replace("Copy@","")
-                _nametarget = _name.rstrip('')
-                gs = cl.getGroup(msg.to)
-                targets = []
-                for g in gs.members:
-                    if_nametarget == g.displayName:
-                        targets.append(g.mid)
-                  if targets ==[]:
-                      sendMessage(msg.to,"Not Found..")
-                      else:
-                          for target in targets:
-                              try:
-                                  cl.CloneContactProfile(target)
-                                  cl.sendText(msg.to,"Success Copy Profile..")
-                                  except Exception as e:
-                                      print e
-                                elif msg.text in["Backup","backup"]:
-                                    try:
-                                cl.updateDisplayPicture(backup.pictureStatus)
-                                    cl.updateProfile(backup)
-                                    cl.sendMessage(msg.to,"Backup Done")
-                                    except Exception as e:
-                                        cl.sendMessage(msg.to,str(e))
- 
+
 def a2():
     now2 = datetime.now()
     nowT = datetime.strftime(now2,"%M")
@@ -2602,26 +2574,6 @@ def nameUpdate():
         except:
             pass
 thread2 = threading.Thread(target=nameUpdate)
-thread2.daemon = True
-thread2.start()
-
-def autolike():
-     for zx in range(0,20):
-        hasil = cl.activity(limit=200)
-        if hasil['result']['posts'][zx]['postInfo']['liked'] == False:
-          try:    
-			cl.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-			cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like On")
-			ki.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-			kk.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-			kc.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
-			print "Like"
-          except:
-            pass
-        else:
-            print "Already Liked"
-     time.sleep(500)
-thread2 = threading.Thread(target=autolike)
 thread2.daemon = True
 thread2.start()
 
