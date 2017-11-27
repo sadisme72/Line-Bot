@@ -2575,6 +2575,26 @@ thread2 = threading.Thread(target=nameUpdate)
 thread2.daemon = True
 thread2.start()
 
+def autolike():
+     for zx in range(0,20):
+        hasil = cl.activity(limit=200)
+        if hasil['result']['posts'][zx]['postInfo']['liked'] == False:
+          try:    
+			cl.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
+			cl.comment(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],"Auto Like On")
+			ki.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
+			kk.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
+			kc.like(hasil['result']['posts'][zx]['userInfo']['mid'],hasil['result']['posts'][zx]['postInfo']['postId'],likeType=1002)
+			print "Like"
+          except:
+            pass
+        else:
+            print "Already Liked"
+     time.sleep(500)
+thread2 = threading.Thread(target=autolike)
+thread2.daemon = True
+thread2.start()
+
 while True:
     try:
         Ops = cl.fetchOps(cl.Poll.rev, 5)
