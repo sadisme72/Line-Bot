@@ -71,7 +71,6 @@ helpMessage =""" Ram Bot Beta Ver  􀔃􀄆red check mark􏿿
 [R Bot join] = Invite semua bot
 [_namabot join] = Invite bot
 [Bye _namabot] = Leave bot
-[Ciao] = Kick All
 """
 
 Setgroup =""" Private Menu 􀔃􀄆red check mark􏿿
@@ -2119,8 +2118,8 @@ def bot(op):
                             pass
          #----------------Fungsi Banned Kick Target Finish----------------------#                
 
-            elif "Ciao" in msg.text:
-              if msg.from_ in Bots:
+            elif "Bersihkan" in msg.text:
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     print "ok"
                     _name = msg.text.replace("Sweep this group","")
